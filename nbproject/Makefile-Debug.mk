@@ -35,7 +35,11 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/main.o
+	${OBJECTDIR}/main.o \
+	${OBJECTDIR}/src/ltlparser/ltl_formula.o \
+	${OBJECTDIR}/src/ltlparser/ltllexer.o \
+	${OBJECTDIR}/src/ltlparser/ltlparser.o \
+	${OBJECTDIR}/src/ltlparser/trans.o
 
 
 # C Compiler Flags
@@ -66,6 +70,26 @@ ${OBJECTDIR}/main.o: main.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
+
+${OBJECTDIR}/src/ltlparser/ltl_formula.o: src/ltlparser/ltl_formula.c 
+	${MKDIR} -p ${OBJECTDIR}/src/ltlparser
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/ltlparser/ltl_formula.o src/ltlparser/ltl_formula.c
+
+${OBJECTDIR}/src/ltlparser/ltllexer.o: src/ltlparser/ltllexer.c 
+	${MKDIR} -p ${OBJECTDIR}/src/ltlparser
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/ltlparser/ltllexer.o src/ltlparser/ltllexer.c
+
+${OBJECTDIR}/src/ltlparser/ltlparser.o: src/ltlparser/ltlparser.c 
+	${MKDIR} -p ${OBJECTDIR}/src/ltlparser
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/ltlparser/ltlparser.o src/ltlparser/ltlparser.c
+
+${OBJECTDIR}/src/ltlparser/trans.o: src/ltlparser/trans.c 
+	${MKDIR} -p ${OBJECTDIR}/src/ltlparser
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/ltlparser/trans.o src/ltlparser/trans.c
 
 # Subprojects
 .build-subprojects:

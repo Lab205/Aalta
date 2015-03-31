@@ -6,6 +6,8 @@
  */
 
 #include <cstdlib>
+#include <string>
+#include "src/ltlparser/trans.h"
 
 using namespace std;
 
@@ -13,6 +15,10 @@ using namespace std;
  * 
  */
 int main(int argc, char** argv) {
+    ltl_formula *ltl = getAST("! b");
+    char *str = ltl_to_string(ltl);
+    printf("%s", str);
+    free(str);
 
     return 0;
 }
