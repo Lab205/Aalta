@@ -79,6 +79,11 @@ ltl_formula *create_operation(EOperationType type, ltl_formula *left, ltl_formul
     return ret;
 }
 
+/**
+ * ltl公式转string
+ * @param root
+ * @return 
+ */
 char *ltl_to_string(ltl_formula *root) {
     if (root == NULL) {
         return allocate_cstr("");
@@ -89,20 +94,20 @@ char *ltl_to_string(ltl_formula *root) {
     char *right = ltl_to_string(root->right);
     
     int len = strlen(left);
-    char have_left = (len == 0);
-    if (!have_left) len += 2;
+    char have_left = (len != 0);
+    if (have_left) len += 2;
     len += strlen(s_operator[root->type]) + 2;
     len += strlen(right);
     
     char *ret = (char *) malloc((len + 1) * sizeof (char));
     strcpy(ret, "");
-    if (!have_left) strcat(ret, "(");
+    if (have_left) strcat(ret, "(");
     strcat(ret, left);
-    strcat(ret, " ");
+    if (have_left) strcat(ret, " ");
     strcat(ret, s_operator[root->type]);
-    strcat(ret, " ");
+    if (strlen(right) != 0) strcat(ret, " ");
     strcat(ret, right);
-    if (!have_left) strcat(ret, ")");
+    if (have_left) strcat(ret, ")");
     
     free(left);
     free(right);

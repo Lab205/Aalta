@@ -1,0 +1,35 @@
+a
+a
+
+true
+T
+
+false
+F
+
+!a
+¬ a
+
+a & b
+(a ∧ b)
+
+a | b
+(a ∨ b)
+
+a -> b
+(a -> b)
+
+a<->b
+(a <-> b)
+
+a R b
+(a R b)
+
+a U b
+(a U b)
+
+X a
+X a
+
+a&b|(c R !d U X e) & (a<->!c)
+((a ∧ b) ∨ ((c R (¬ d U X e)) ∧ (a <-> ¬ c)))
